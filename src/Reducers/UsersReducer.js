@@ -34,7 +34,6 @@ let users = {
   }
 }
 
-
 export default (state = users, action) => {
 
   switch (action.type) {

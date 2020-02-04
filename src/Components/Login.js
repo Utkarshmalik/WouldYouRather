@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Styles/loginStyle.css';
 import { Button } from '@material-ui/core';
 import { connect } from 'react-redux';
-
+import { AuthLogin } from '../Actions/shared';
 
 
 class Login extends Component {
@@ -22,7 +22,7 @@ class Login extends Component {
   onSignIn() {
 
     if (this.state.selected !== "none") {
-      //dispatch an action to make the user logged in and link to the homepage
+      this.props.dispatch(AuthLogin(this.state.selected))
       this.props.history.push('./');
     }
   }

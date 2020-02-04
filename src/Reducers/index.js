@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import RegisteredUsers from './RegisteredUsers'
-import CurrentlyLoggedInUser from './CurrentlyLoggedIn'
+import RegisteredUsers from './UsersReducer'
+import currentLoggedInUser from './AuthReducer'
 
 export default combineReducers({
   RegisteredUsers,
-  CurrentlyLoggedInUser
+  currentLoggedInUser
 })
 
 
