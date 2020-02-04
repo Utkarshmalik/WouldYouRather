@@ -33,39 +33,40 @@ class Login extends Component {
         <div className="background"></div>
         <div className="background2"></div>
 
-
-        <div className="loginForm">
-          <hgroup>
-            <h1>Would You Rather</h1>
-          </hgroup>
-          <div>
-
-            <div style={{ color: "#F0B05D", margin: "15px" }} >
-              Select the user:
-          </div>
-
+        <div style={{ padding: "80px" }} >
+          <div className="loginForm">
+            <hgroup>
+              <h1 style={{ fontSize: "40px", margin: "15px" }}>Would You Rather</h1>
+            </hgroup>
             <div>
-              <select onChange={this.handleChange.bind(this)} value={this.state.selected} >
-                <option value="move" disabled>SELECT USER...</option>
 
-                {
-                  Object.keys(this.props.RegisteredUsers).map((user) =>
-                    <option key={user} value={user}>{user}</option>
-                  )}
-                <option value="none">None</option>
-              </select>
-            </div>
-
-
-            <div style={{ color: "black", margin: "15px" }} >
-              <Button onClick={this.onSignIn.bind(this)} variant="outlined" style={{ color: "#F0B05D" }}>Sign In </Button>
-            </div>
-
+              <div style={{ fontSize: "35px", margin: "30px", color: "#F0B05D", margin: "15px" }} >
+                Select the user:
           </div>
 
+              <div style={{ margin: "35px" }}>
+                <select style={{ fontSize: "25px", color: "#F0B05D" }} onChange={this.handleChange.bind(this)} value={this.state.selected} >
+                  <option value="move" disabled>SELECT USER...</option>
 
-          <div className="powered">
-            Powered by <a href="http://www.kvcodes.com"> Kvcodes </a>
+                  {
+                    Object.keys(this.props.RegisteredUsers).map((user) =>
+                      <option key={user} value={user}>{user}</option>
+                    )}
+                  <option value="none">None</option>
+                </select>
+              </div>
+
+              <button style={{ margin: "30px" }} onClick={this.onSignIn.bind(this)} type="button" class="buttonui "> <span> Sign In </span>
+                <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+              </button>
+
+
+            </div>
+
+
+            <div className="powered">
+              Powered by <a href="http://www.kvcodes.com"> Kvcodes </a>
+            </div>
           </div>
         </div>
       </div>

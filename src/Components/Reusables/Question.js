@@ -6,7 +6,7 @@ class Question extends Component {
   render() {
     return (
       <div>
-        <h1>Question</h1>
+        <h1 style={{ color: "black" }}>Question</h1>
       </div>
     )
   }

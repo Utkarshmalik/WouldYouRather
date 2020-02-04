@@ -5,8 +5,10 @@ class Leaderboard extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Leaderboard</h1>
+      <div style={{ color: "black" }}>
+        <h1 style={{ color: "black" }}>Leaderboard</h1>
+       
+
       </div>
     )
   }
