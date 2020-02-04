@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
 
-class Leaderboard extends Comment {
+class Leaderboard extends Component {
 
   render() {
-    <div>
-      <h1>Leaderboard</h1>
-    </div>
+    return (
+      <div>
+        <h1>Leaderboard</h1>
+      </div>
+    )
   }
 
 

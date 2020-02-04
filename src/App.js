@@ -6,6 +6,8 @@ import Login from './Components/Login';
 import HomePage from './Components/Homepage';
 import Leaderboard from './Components/LeaderBoard';
 import PostQuestion from './Components/PostQuestion';
+import Question from './Components/Reusables/Question';
+
 
 
 
@@ -13,11 +15,11 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Route path='/' component={} />
-        <Route path='/login' component={login} />
-        <Route path='/new' component={} />
-        <Route path='/leaderboard' component={} />
-        <Route path='/Question/:id' component={} />
+        <Route exact path='/' component={HomePage} />
+        <Route path='/login' component={Login} />
+        <Route path='/new' component={PostQuestion} />
+        <Route path='/leaderboard' component={Leaderboard} />
+        <Route path='/question/:id' component={Question} />
       </Router>
     </div >
   );

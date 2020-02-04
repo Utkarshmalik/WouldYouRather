@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
 
-class Question extends Comment {
+class Question extends Component {
 
   render() {
-    <div>
-      <h1>Question</h1>
-    </div>
+    return (
+      <div>
+        <h1>Question</h1>
+      </div>
+    )
   }
 
 
