@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { green } from '@material-ui/core/colors';
 import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 
 const GreenRadio = withStyles({
@@ -59,10 +60,10 @@ class QuestionComponent extends Component {
           <div class="panel panel-primary">
             <div class="panel-heading">
               <h3 class="panel-title">
-                <span class="glyphicon glyphicon-circle-arrow-right"></span>Here is a question for you ! </h3>
+              </h3>
             </div>
             <div class="panel-body two-col">
-              <div class="row">
+              <div style={{ textAlign: "center" }} class="row">
                 <div class="col-md-3">
                   <div class="">
                     <img height="120px" width="140px" src="https://i.ya-webdesign.com/images/avatar-png-1.png" alt="Flowers" />
@@ -72,70 +73,36 @@ class QuestionComponent extends Component {
                 <div class="col-md-9">
                   <div class="">
                     <div>
-                      <h1 style={{ fontSize: 50 }}>{question.author.toUpperCase()} <span>ASKS :</span> </h1>
+                      <h1 style={{ fontSize: 35 }}>{question.author.toUpperCase()}  <span>ASKS :</span> </h1>
+                    </div>
+                    <br />
+
+                    <div>
+                      <h1 style={{ fontSize: 25 }}>Would You Rather..</h1>
                     </div>
                     <div>
-
-                      <br />
-                      <br />
-
-                      <h1 style={{ fontSize: 30 }}>Would You Rater ?</h1>
+                      <span style={{ fontSize: 15 }}>{question.optionOne.text}/{question.optionTwo.text}</span>
                     </div>
-                    <br />
-                    <br />
 
 
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="well well-sm ">
 
-                    <Radio
-                      checked={this.state.selected === "optionOne"}
-                      style={{ marginTop: "-10px" }}
-                      onChange={this.handleChange.bind(this)}
-                      value="optionOne"
-                      name="radio-button-demo"
-                    />
-                    <label style={{ fontSize: 30 }} >
-                      {question.optionOne.text}
-                    </label>
+
+
 
                   </div>
                 </div>
 
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="well well-sm ">
 
-                    <Radio
-                      checked={this.state.selected === "optionTwo"}
-                      style={{ marginTop: "-10px" }}
-                      onChange={this.handleChange.bind(this)}
-                      value="optionTwo"
-                      name="radio-button-demo"
-                    />
-                    <label style={{ fontSize: 30 }} >
-                      {question.optionTwo.text}
-                    </label>
-
-                  </div>
-                </div>
-
-              </div>
             </div>
-            <div style={{ textAlign: "center", height: 80 }} class="panel-footer">
+            <div style={{ textAlign: "center" }} class="panel-footer">
               <Button onClick={this.onVote.bind(this)} style={{ height: 50, width: "50%" }} variant="contained" color="secondary">
-                <h1>VOTE</h1>
+                <h1>VIEW POLL</h1>
               </Button>
-
             </div>
           </div>
         </div>
-      </div>
+      </div >
 
     )
   }

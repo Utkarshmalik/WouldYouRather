@@ -7,24 +7,42 @@ import homepageStyle from './Styles/homepageStyle.css';
 
 class HomePage extends Component {
 
-
-
   render() {
-    console.log(this.props.currentUser)
+    console.log(this.props)
     return (
-      <div>
+      <div style={{ color: "black" }} >
 
-        <h1>Homepage</h1>
+        <p>Select a maintenance drone:</p>
+
+        <div>
+          <input type="radio" id="huey" name="drone" value="huey"
+            checked />
+          <label for="huey">Huey</label>
+        </div>
+
+        <div>
+          <input type="radio" id="dewey" name="drone" value="dewey" />
+          <label for="dewey">Dewey</label>
+        </div>
+
+        <div>
+          <input type="radio" id="louie" name="drone" value="louie" />
+          <label for="louie">Louie</label>
+        </div>
+
       </div>
+
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  console.log(state)
   return (
     {
-      currentUser: state.currentLoggedInUser
+      currentUser: state.currentLoggedInUser,
+      answeredQuestions: state.currentLoggedInUser.answers,
+      questions: state.questions
     })
 }
 

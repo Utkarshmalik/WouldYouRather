@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import '../Styles/QuestionStyle.css';
+import '../Components/Styles/QuestionStyle.css';
 import { withStyles } from '@material-ui/core/styles';
 import { green } from '@material-ui/core/colors';
 import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
+import { ProgressBar } from 'react-bootstrap'
 
 
 const GreenRadio = withStyles({
@@ -16,6 +17,9 @@ const GreenRadio = withStyles({
   checked: {},
 })(props => <Radio color="default" {...props} />);
 
+
+
+const now = 60;
 
 
 
@@ -38,7 +42,7 @@ let question = {
 class QuestionComponent extends Component {
 
   state = {
-    selected: null
+    yourVote:"optionOne"
   }
 
   handleChange(e) {
@@ -59,7 +63,7 @@ class QuestionComponent extends Component {
           <div class="panel panel-primary">
             <div class="panel-heading">
               <h3 class="panel-title">
-                <span class="glyphicon glyphicon-circle-arrow-right"></span>Here is a question for you ! </h3>
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>Here are the results ! </h3>
             </div>
             <div class="panel-body two-col">
               <div class="row">
@@ -72,14 +76,14 @@ class QuestionComponent extends Component {
                 <div class="col-md-9">
                   <div class="">
                     <div>
-                      <h1 style={{ fontSize: 50 }}>{question.author.toUpperCase()} <span>ASKS :</span> </h1>
+                      <h1 style={{ fontSize: 40 }}> Asked By {question.author.toUpperCase()} </h1>
                     </div>
                     <div>
 
                       <br />
                       <br />
 
-                      <h1 style={{ fontSize: 30 }}>Would You Rater ?</h1>
+                      <h1 style={{ fontSize: 30 }}> The Results are : </h1>
                     </div>
                     <br />
                     <br />
@@ -90,18 +94,16 @@ class QuestionComponent extends Component {
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <div class="well well-sm ">
-
-                    <Radio
-                      checked={this.state.selected === "optionOne"}
-                      style={{ marginTop: "-10px" }}
-                      onChange={this.handleChange.bind(this)}
-                      value="optionOne"
-                      name="radio-button-demo"
-                    />
-                    <label style={{ fontSize: 30 }} >
+                  <div class="well well-sm">
+                    <div style={{ fontSize: 15 }}>
                       {question.optionOne.text}
-                    </label>
+                      <br />
+                    </div>
+                    <ProgressBar style={{ height: 20 }} now={now} label={`${now}% ${(this.state.yourVote==='optionOne')?" (Your Vote) ":"" } `} />
+
+                    <div style={{ marginTop: "-10px" }}>
+                      {` (2 out of 3) `}
+                    </div>
 
                   </div>
                 </div>
@@ -109,28 +111,24 @@ class QuestionComponent extends Component {
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <div class="well well-sm ">
-
-                    <Radio
-                      checked={this.state.selected === "optionTwo"}
-                      style={{ marginTop: "-10px" }}
-                      onChange={this.handleChange.bind(this)}
-                      value="optionTwo"
-                      name="radio-button-demo"
-                    />
-                    <label style={{ fontSize: 30 }} >
+                  <div class="well well-sm">
+                    <div style={{ fontSize: 15 }}>
                       {question.optionTwo.text}
-                    </label>
+                      <br />
+                    </div>
+                    <ProgressBar style={{ height: 20 }} now={now} label={`${now}% ${(this.state.yourVote==='optionTwo')?" (Your Vote) ":"" } `}/>
+
+                    <div style={{ marginTop: "-10px" }}>
+                      {` (2 out of 3) `}
+                    </div>
 
                   </div>
                 </div>
 
               </div>
             </div>
-            <div style={{ textAlign: "center", height: 80 }} class="panel-footer">
-              <Button onClick={this.onVote.bind(this)} style={{ height: 50, width: "50%" }} variant="contained" color="secondary">
-                <h1>VOTE</h1>
-              </Button>
+            <div style={{ textAlign: "center", height: 20 }} class="panel-footer">
+
 
             </div>
           </div>

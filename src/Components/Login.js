@@ -22,14 +22,14 @@ class Login extends Component {
   onSignIn() {
 
     if (this.state.selected !== "none") {
-      this.props.dispatch(AuthLogin(this.state.selected))
+      this.props.dispatch(AuthLogin(this.props.RegisteredUsers[this.state.selected]))
       this.props.history.push('./');
     }
   }
 
   render() {
     return (
-      <div>
+      <div className="login">
         <div className="background"></div>
         <div className="background2"></div>
 
