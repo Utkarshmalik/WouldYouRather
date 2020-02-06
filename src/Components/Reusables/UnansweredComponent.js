@@ -5,6 +5,8 @@ import { green } from '@material-ui/core/colors';
 import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 
 
 const GreenRadio = withStyles({
@@ -21,20 +23,6 @@ const GreenRadio = withStyles({
 
 
 
-let question = {
-  id: '8xf0y6ziyjabvozdd253nd',
-  author: 'sarahedo',
-  timestamp: 1467166872634,
-  optionOne: {
-    votes: ['sarahedo'],
-    text: 'have horrible short term memory',
-  },
-  optionTwo: {
-    votes: [],
-    text: 'have horrible long term memory'
-  }
-}
-
 
 class QuestionComponent extends Component {
 
@@ -48,14 +36,27 @@ class QuestionComponent extends Component {
     })
   }
 
-  onVote() {
-    console.log("Vote from here");
+  onViewPoll() {
+
+    console.log(this.props);
+
   }
 
   render() {
 
+    const { optionOne, optionTwo, id } = this.props.question
+    const { author, avatar } = this.props;
+
+
+    console.log(this.props)
+
+
+    console.log(optionOne)
+
     return (
-      <div>
+      <div style={{ display: 'flex', flex: 1, justifyContent: 'center', marginTop: '40px' }}>
+
+
         <div class="col-md-6">
           <div class="panel panel-primary">
             <div class="panel-heading">
@@ -66,29 +67,23 @@ class QuestionComponent extends Component {
               <div style={{ textAlign: "center" }} class="row">
                 <div class="col-md-3">
                   <div class="">
-                    <img height="120px" width="140px" src="https://i.ya-webdesign.com/images/avatar-png-1.png" alt="Flowers" />
+                    <img height="120px" width="140px" src={avatar} alt="Flowers" />
 
                   </div>
                 </div>
                 <div class="col-md-9">
                   <div class="">
                     <div>
-                      <h1 style={{ fontSize: 35 }}>{question.author.toUpperCase()}  <span>ASKS :</span> </h1>
+                      <h1 style={{ fontSize: 35 }}>{author.toUpperCase()}  <span>ASKS :</span> </h1>
                     </div>
                     <br />
 
                     <div>
-                      <h1 style={{ fontSize: 25 }}>Would You Rather..</h1>
+                      <h1 style={{ fontSize: 25 }}>Would You Rather.....</h1>
                     </div>
                     <div>
-                      <span style={{ fontSize: 15 }}>{question.optionOne.text}/{question.optionTwo.text}</span>
+                      <span style={{ fontSize: 15 }}>{optionOne.text}/{optionTwo.text}</span>
                     </div>
-
-
-
-
-
-
                   </div>
                 </div>
 
@@ -96,9 +91,11 @@ class QuestionComponent extends Component {
 
             </div>
             <div style={{ textAlign: "center" }} class="panel-footer">
-              <Button onClick={this.onVote.bind(this)} style={{ height: 50, width: "50%" }} variant="contained" color="secondary">
-                <h1>VIEW POLL</h1>
-              </Button>
+              <Link to={`/question/:${id}`} >
+                <Button onClick={this.onViewPoll.bind(this)} style={{ height: 50, width: "50%" }} variant="contained" color="secondary">
+                  <h1>VIEW POLL</h1>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -107,6 +104,18 @@ class QuestionComponent extends Component {
     )
   }
 }
+const mapStateToProps = (state, myProps) => {
+
+  console.log(state)
+  console.log(myProps)
+
+  return ({
+    author: state.RegisteredUsers[myProps.question.author].name,
+    avatar: state.RegisteredUsers[myProps.question.author].avatarURL,
+    question: myProps.question
+  })
+
+}
 
 
-export default QuestionComponent;
+export default connect(mapStateToProps)(QuestionComponent);

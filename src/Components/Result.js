@@ -7,18 +7,6 @@ import Button from '@material-ui/core/Button';
 import { ProgressBar } from 'react-bootstrap'
 
 
-const GreenRadio = withStyles({
-  root: {
-    color: green[400],
-    '&$checked': {
-      color: green[600],
-    },
-  },
-  checked: {},
-})(props => <Radio color="default" {...props} />);
-
-
-
 const now = 60;
 
 

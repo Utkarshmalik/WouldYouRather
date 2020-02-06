@@ -70,7 +70,7 @@ class QuestionComponent extends Component {
   render() {
 
     return (
-      <div>
+      <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
         <div class="col-md-8">
           <div class="panel panel-primary">
             <div class="panel-heading">

@@ -6,7 +6,7 @@ import Login from './Components/Login';
 import HomePage from './Components/Homepage';
 import Leaderboard from './Components/LeaderBoard';
 import PostQuestion from './Components/PostQuestion';
-import Question from './Components/Reusables/Question';
+import ViewQuestion from './Components/Reusables/ViewQuestionComponent.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import navbar from './Components/navbar'
 import { connect } from 'react-redux';
@@ -25,24 +25,24 @@ class App extends Component {
   render() {
     return (
       <div>
+
         {
+
+
           (this.props.logggedIn) ? (
+
+
             <Router>
-              <Route path='/' component={UnansweredList} />
+              <Route path='/' component={navbar} />
+              <Route exact path='/' component={HomePage} />
+              <Route path='/login' component={Login} />
+              <Route path='/new' component={PostQuestion} />
+              <Route path='/leaderboard' component={Leaderboard} />
+              <Route path='/eeede' component={UnAnsweredComponent} />
 
-              {
-
-                // <Route path='/' component={navbar} />
-                // <Route exact path='/' component={HomePage} />
-                // <Route path='/login' component={Login} />
-                // <Route path='/new' component={PostQuestion} />
-                // <Route path='/leaderboard' component={Leaderboard} />
-                // Route path='/question/:id' component={Question} />
-
-
-              }
-
+              <Route path='/question/:id' component={ViewQuestion} />
             </Router>
+
           ) :
             (<Router><Route path='/' component={Login} /> </Router>)
         }
@@ -54,8 +54,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return (
     {
-      //logggedIn: (state.currentLoggedInUser !== null)
-      logggedIn: true
+      logggedIn: (state.currentLoggedInUser !== null)
+      //logggedIn: true
 
     }
   )
