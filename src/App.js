@@ -47,7 +47,6 @@ class App extends Component {
               <Route path='/login' component={ErrorMessage} />
               <Route path='/new' component={ErrorMessage} />
               <Route path='/leaderboard' component={ErrorMessage} />
-              <Route path='/eeede' component={ErrorMessage} />
               <Route path='/question/:id' component={ErrorMessage} />
 
             </Router>)

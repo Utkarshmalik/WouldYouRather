@@ -53,19 +53,19 @@ class ViewQuestionComponent extends Component {
 
   render() {
 
-    console.log(this.props)
+    //console.log(this.props)
     const authorName = this.props.author.name
     const avatar = this.props.author.avatarURL
     const { answer } = this.props;
-    console.log(avatar)
+    //console.log(avatar)
     const optionOne = this.props.question.optionOne.text;
     const optionTwo = this.props.question.optionTwo.text;
 
     const countVotes1 = this.props.question.optionOne.votes.length;
     const countVotes2 = this.props.question.optionTwo.votes.length;
 
-    console.log(countVotes1);
-    console.log(countVotes2)
+    //console.log(countVotes1);
+    //console.log(countVotes2)
 
     const total = countVotes1 + countVotes2
 
@@ -75,30 +75,30 @@ class ViewQuestionComponent extends Component {
 
 
 
-    console.log(prcnt1)
-    console.log(prcnt2)
+    //console.log(prcnt1)
+    //console.log(prcnt2)
 
 
 
     return (
       (!this.props.alreadyAnswered) ? (
         <div className="question-main">
-          <div class="col-md-6">
-            <div class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 class="panel-title">
-                  <span class="glyphicon glyphicon-circle-arrow-right"></span> <span className="font3"> Here is a question for you ! </span> </h3>
+          <div className="col-md-6">
+            <div className="panel panel-primary">
+              <div className="panel-heading">
+                <h3 className="panel-title">
+                  <span className="glyphicon glyphicon-circle-arrow-right"></span> <span className="font3"> Here is a question for you ! </span> </h3>
               </div>
-              <div class="panel-body two-col">
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="">
+              <div className="panel-body two-col">
+                <div className="row">
+                  <div className="col-md-4">
+                    <div className="">
                       <img className="avatar" src={`${avatar}`} alt="Flowers" />
 
                     </div>
                   </div>
-                  <div class="col-md-8">
-                    <div class="">
+                  <div className="col-md-8">
+                    <div className="">
                       <div>
                         <div className="head1" >{authorName} <span>ASKS :</span> </div>
                       </div>
@@ -117,9 +117,9 @@ class ViewQuestionComponent extends Component {
                   </div>
                 </div>
 
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="well well-sm  RadioBox">
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="well well-sm  RadioBox">
 
                       <Radio
                         checked={this.state.selected === "optionOne"}
@@ -137,9 +137,9 @@ class ViewQuestionComponent extends Component {
 
                 </div>
 
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="well well-sm RadioBox">
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="well well-sm RadioBox">
 
                       <Radio
                         checked={this.state.selected === "optionTwo"}
@@ -158,7 +158,7 @@ class ViewQuestionComponent extends Component {
 
               </div>
 
-              <div class="panel-footer center">
+              <div className="panel-footer center">
                 <Button className="button" onClick={this.onVote.bind(this)} variant="contained">
                   <div className="head3">VOTE</div>
                 </Button>
@@ -170,22 +170,22 @@ class ViewQuestionComponent extends Component {
 
       ) : (
           <div style={{ display: 'flex', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <div class="col-md-6">
-              <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h3 class="panel-title">
-                    <span class="glyphicon glyphicon-circle-arrow-right"></span>Here are the results ! </h3>
+            <div className="col-md-6">
+              <div className="panel panel-primary">
+                <div className="panel-heading">
+                  <h3 className="panel-title">
+                    <span className="glyphicon glyphicon-circle-arrow-right"></span>Here are the results ! </h3>
                 </div>
-                <div class="panel-body two-col">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <div class="">
+                <div className="panel-body two-col">
+                  <div className="row">
+                    <div className="col-md-3">
+                      <div className="">
                         <img height="120px" width="140px" src={avatar} alt="Flowers" />
 
                       </div>
                     </div>
-                    <div class="col-md-9">
-                      <div class="">
+                    <div className="col-md-9">
+                      <div className="">
                         <div>
                           <h1 style={{ fontSize: 40 }}> Asked By {authorName} </h1>
                         </div>
@@ -203,9 +203,9 @@ class ViewQuestionComponent extends Component {
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="well well-sm">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <div className="well well-sm">
                         <div style={{ fontSize: 15 }}>
                           {optionOne}
                           <br />
@@ -220,9 +220,9 @@ class ViewQuestionComponent extends Component {
                     </div>
 
                   </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="well well-sm">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <div className="well well-sm">
                         <div style={{ fontSize: 15 }}>
                           {optionTwo}
                           <br />
@@ -236,7 +236,7 @@ class ViewQuestionComponent extends Component {
                     </div>
                   </div>
                 </div>
-                <div style={{ textAlign: "center", height: 20 }} class="panel-footer">
+                <div style={{ textAlign: "center", height: 20 }} className="panel-footer">
                 </div>
               </div>
             </div>
@@ -250,7 +250,7 @@ class ViewQuestionComponent extends Component {
 
 const mapStateToProps = (state, myProps) => {
 
-  console.log(state)
+  //console.log(state)
 
   const questionId = myProps.match.params.id.slice(1)
   const { questions, RegisteredUsers } = state;
@@ -262,8 +262,8 @@ const mapStateToProps = (state, myProps) => {
 
 
 
-  console.log(questionId)
-  console.log(currentUser)
+  //console.log(questionId)
+  //console.log(currentUser)
 
 
   return ({

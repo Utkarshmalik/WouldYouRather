@@ -13,7 +13,7 @@ export const tempAction = () => {
 
 
 export const AuthLogin = (id) => {
-  console.log(id)
+  //console.log(id)
   return ({
     type: currentLoggedInUser,
     id
@@ -55,7 +55,7 @@ export const onSubmitAnswer = (authedUser, qid, answer) => {
 
 export const onAddNewUserChange = (question) => {
 
-  console.log("heelllo 1");
+  //console.log("heelllo 1");
 
 
   return ({
@@ -68,7 +68,7 @@ export const onAddNewUserChange = (question) => {
 }
 
 export const onAddNewQuestionChange = (question) => {
-  console.log("hellooo 2")
+  //console.log("hellooo 2")
 
   return ({
     type: AddNewQuestionModify,

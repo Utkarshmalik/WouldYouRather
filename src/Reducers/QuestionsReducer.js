@@ -90,7 +90,7 @@ export default (state = initialState, action) => {
 
     case updateQuestionAnswer:
       {
-        console.log(action.payload)
+        //console.log(action.payload)
 
         const { authedUser, qid, answer } = action.payload;
 
@@ -112,7 +112,7 @@ export default (state = initialState, action) => {
 
       const question = action.payload
 
-      console.log(question)
+      //console.log(question)
 
       return {
         ...state,

@@ -1,21 +1,10 @@
 import React, { Component } from 'react';
 import '../Styles/QuestionStyle.css';
 import { withStyles } from '@material-ui/core/styles';
-import { green } from '@material-ui/core/colors';
 import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
-
-const GreenRadio = withStyles({
-  root: {
-    color: green[400],
-    '&$checked': {
-      color: green[600],
-    },
-  },
-  checked: {},
-})(props => <Radio color="default" {...props} />);
 
 
 
@@ -49,12 +38,12 @@ class QuestionComponent extends Component {
   }
 
   onVote() {
-    console.log("Vote from here");
+    //console.log("Vote from here");
   }
 
   render() {
 
-    console.log(this.props)
+    //console.log(this.props)
 
     const answered = Object.keys(this.props.user.answers).length;
     const created = this.props.user.questions.length;
@@ -62,29 +51,29 @@ class QuestionComponent extends Component {
     const name = this.props.user.name;
     const avatarURL = this.props.user.avatarURL;
 
-    console.log(answered);
-    console.log(created)
-    console.log(name)
-    console.log(avatarURL)
+    //console.log(answered);
+    //console.log(created)
+    //console.log(name)
+    //console.log(avatarURL)
 
     return (
       <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
-        <div class="col-md-6">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">
+        <div className="col-md-6">
+          <div className="panel panel-primary">
+            <div className="panel-heading">
+              <h3 className="panel-title">
               </h3>
             </div>
-            <div class="panel-body two-col">
-              <div style={{ textAlign: "center" }} class="row">
-                <div class="col-md-3">
-                  <div class="">
+            <div className="panel-body two-col">
+              <div style={{ textAlign: "center" }} className="row">
+                <div className="col-md-3">
+                  <div className="">
                     <img height="120px" width="140px" src={avatarURL} alt="Flowers" />
 
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="">
+                <div className="col-md-6">
+                  <div className="">
                     <div>
                       <h1 style={{ fontSize: 40 }}>{name}  </h1>
                     </div>
@@ -101,8 +90,8 @@ class QuestionComponent extends Component {
 
                   </div>
                 </div>
-                <div class="col-md-3">
-                  <div class="">
+                <div className="col-md-3">
+                  <div className="">
                     <Paper style={{ height: 130 }} elevation={5} >
                       <div style={{ textAlign: "center", fontSize: 30 }}> Score:
                       <div style={{ textAlign: "center", fontSize: 55 }}> {score} </div>
@@ -115,9 +104,9 @@ class QuestionComponent extends Component {
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div style={{ textAlign: "center" }} class="well well-sm ">
+              <div className="row">
+                <div className="col-md-12">
+                  <div style={{ textAlign: "center" }} className="well well-sm ">
 
 
                     <label style={{ fontSize: 30 }} >
@@ -128,9 +117,9 @@ class QuestionComponent extends Component {
                 </div>
 
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div style={{ textAlign: "center" }} class="well well-sm ">
+              <div className="row">
+                <div className="col-md-12">
+                  <div style={{ textAlign: "center" }} className="well well-sm ">
 
                     <label style={{ fontSize: 30 }} >
                       {`Created Questions : ${created}`}
@@ -141,7 +130,7 @@ class QuestionComponent extends Component {
 
               </div>
             </div>
-            <div style={{ textAlign: "center" }} class="panel-footer">
+            <div style={{ textAlign: "center" }} className="panel-footer">
 
 
             </div>

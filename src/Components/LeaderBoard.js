@@ -3,7 +3,6 @@ import LeaderComponent from './Reusables/LeaderComponent';
 import { connect } from 'react-redux';
 
 
-
 class Leaderboard extends Component {
 
   render() {
@@ -43,7 +42,7 @@ const myStateToProps = (state, myProps) => {
   )
 
   setTimeout(() => {
-    console.log(users)
+    //console.log(users)
   }, 2000)
 
 

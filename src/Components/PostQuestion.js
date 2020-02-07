@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../Components/Styles/QuestionStyle.css';
 import { withStyles } from '@material-ui/core/styles';
-import { green } from '@material-ui/core/colors';
 import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
 import { ProgressBar } from 'react-bootstrap'
@@ -31,7 +30,7 @@ class QuestionComponent extends Component {
 
   onPost() {
 
-    console.log(this.props);
+    //console.log(this.props);
 
     const { optionOne, optionTwo } = this.state;
     const { currentUser } = this.props;
@@ -51,16 +50,16 @@ class QuestionComponent extends Component {
 
     return (
       <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
-        <div class="col-md-8">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                <span class="glyphicon glyphicon-circle-arrow-right"></span>Create New Question: </h3>
+        <div className="col-md-8">
+          <div className="panel panel-primary">
+            <div className="panel-heading">
+              <h3 className="panel-title">
+                <span className="glyphicon glyphicon-circle-arrow-right"></span>Create New Question: </h3>
             </div>
-            <div class="panel-body two-col">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="">
+            <div className="panel-body two-col">
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="">
                     <h1>Complete the question : </h1>
                     <hr />
 
@@ -70,8 +69,8 @@ class QuestionComponent extends Component {
                 <br /><br /><br /><br /><br /><br />
 
 
-                <div class="col-md-12">
-                  <div class="">
+                <div className="col-md-12">
+                  <div className="">
                     <h1 style={{ fontSize: 50 }}>Would you rather : </h1>
                     <hr />
 
@@ -79,13 +78,12 @@ class QuestionComponent extends Component {
                 </div>
 
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="well well-sm">
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="well well-sm">
                     <h1>
                       <TextField
 
-                        size="large"
                         style={{ margin: 8, fontSize: "200px" }}
                         placeholder="Option1"
                         fullWidth
@@ -100,17 +98,17 @@ class QuestionComponent extends Component {
 
 
 
-              <div class="row">
-                <div class="col-md-12">
+              <div className="row">
+                <div className="col-md-12">
 
                   <h2 style={{ textAlign: "center" }} > OR </h2>
 
                 </div>
 
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="well well-sm">
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="well well-sm">
                     <TextField
 
                       style={{ margin: 8 }}
@@ -125,8 +123,8 @@ class QuestionComponent extends Component {
 
               </div>
             </div>
-            <div style={{ textAlign: "center" }} class="panel-footer">
-              <Button onClick={this.onPost.bind(this)} style={{ height: 50, width: "50%" }} variant="contained" color="secondary">
+            <div style={{ textAlign: "center" }} className="panel-footer">
+              <Button onClick={this.onPost.bind(this)} style={{ height: 50, width: "50%", backgroundColor: "#428BCA" }} variant="contained">
                 <h1>SUBMIT</h1>
               </Button>
             </div>

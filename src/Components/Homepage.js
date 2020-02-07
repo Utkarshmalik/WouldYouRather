@@ -19,9 +19,6 @@ class HomePage extends Component {
 
     if (this.state.currentState != "unanswered")
       this.setState({ currentState: "unanswered" })
-
-    console.log("unanswered");
-
   }
 
 
@@ -30,36 +27,36 @@ class HomePage extends Component {
     if (this.state.currentState != "answered")
       this.setState({ currentState: "answered" })
 
-    console.log("answered");
+    //console.log("answered");
   }
 
   render() {
-    console.log("rerender")
-    console.log(this.props)
+    //console.log("rerender")
+    //console.log(this.props)
 
 
     return (
       <div style={{ display: "flex", justifyContent: "center", color: "black" }} >
 
-        <div class="col-md-10">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                <span class="glyphicon glyphicon-circle-arrow-right"></span> <span className="font3"> Here is a question for you ! </span> </h3>
+        <div className="col-md-10">
+          <div className="panel panel-primary">
+            <div className="panel-heading">
+              <h3 className="panel-title">
+                <span className="glyphicon glyphicon-circle-arrow-right"></span> <span className="font3"> Here is a question for you ! </span> </h3>
             </div>
-            <div class="panel-body two-col">
-              <div class="row">
-                <div class="col-md-6 center">
-                  <div class="">
-                    <Button className="button" onClick={this.onPressUnasweredQustions.bind(this)} variant="contained">
+            <div className="panel-body two-col">
+              <div className="row">
+                <div className="col-md-6 center">
+                  <div className="">
+                    <Button style={(this.state.currentState === 'unanswered') ? ({ backgroundColor: '#428BCA' }) : ({})} className="button" onClick={this.onPressUnasweredQustions.bind(this)} variant="contained">
                       Unaswered Questions
               </Button>
                   </div>
 
                 </div>
-                <div class="col-md-6 center">
-                  <div class="">
-                    <Button className="button" onClick={this.onPressAnsweredQustions.bind(this)} variant="contained">
+                <div className="col-md-6 center">
+                  <div className="">
+                    <Button style={(this.state.currentState === 'answered') ? ({ backgroundColor: '#428BCA' }) : ({})} className="button" onClick={this.onPressAnsweredQustions.bind(this)} variant="contained">
                       Answered Questions
           </Button>
                   </div>
@@ -67,8 +64,8 @@ class HomePage extends Component {
 
 
               </div>
-              <div class="row center">
-                <div class="col-md-12">
+              <div className="row center">
+                <div className="col-md-12">
 
                   {
                     (this.state.currentState === "unanswered") ? (
@@ -92,7 +89,7 @@ class HomePage extends Component {
 
               </div>
 
-              <div class="panel-footer center">
+              <div className="panel-footer center">
 
               </div>
 
@@ -108,7 +105,7 @@ class HomePage extends Component {
 const mapStateToProps = (state) => {
 
 
-  console.log(state)
+  //console.log(state)
 
 
   const currentLoggedInUserAnswers = state.RegisteredUsers[state.currentLoggedInUser].answers;
@@ -124,12 +121,6 @@ const mapStateToProps = (state) => {
   const answered = Object.keys(currentLoggedInUserAnswers)
     .map(key => { return ({ ...questions[key], answer: currentLoggedInUserAnswers[key] }) })
     .sort(function (a, b) { return b.timestamp - a.timestamp })
-
-
-  console.log(unanswered);
-  console.log(answered);
-
-
   return (
     {
       currentUser: state.currentLoggedInUser,
