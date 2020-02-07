@@ -4,6 +4,7 @@ import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import { ProgressBar } from 'react-bootstrap'
+import { onSubmitAnswer, updationQuestionAnswer } from '../../Actions/shared';
 
 const now = 60;
 
@@ -37,7 +38,19 @@ class ViewQuestionComponent extends Component {
   }
 
   onVote() {
-    console.log("Vote from here");
+    if (this.state.selected != null) {
+
+      //call the action creator from here 
+
+      const user_id = this.props.currentUser.id;
+      const question_id = this.props.question.id;
+      const RegisteredUsers = this.props.RegisteredUsers;
+      const answer = this.state.selected;
+
+      this.props.dispatch(onSubmitAnswer(user_id, question_id, answer));
+      this.props.dispatch(updationQuestionAnswer(user_id, question_id, answer));
+
+    }
   }
 
   render() {
@@ -239,8 +252,8 @@ const mapStateToProps = (state, myProps) => {
   console.log(state)
 
   const questionId = myProps.match.params.id.slice(1)
-  const currentUser = state.currentLoggedInUser;
   const { questions, RegisteredUsers } = state;
+  const currentUser = RegisteredUsers[state.currentLoggedInUser];
   const alreadyAnswered = currentUser.answers[questionId] !== undefined
   const answer = (alreadyAnswered) ? (currentUser.answers[questionId]) : null;
   const question = questions[questionId];
@@ -253,6 +266,8 @@ const mapStateToProps = (state, myProps) => {
 
 
   return ({
+    RegisteredUsers,
+    currentUser,
     alreadyAnswered,
     answer,
     question,

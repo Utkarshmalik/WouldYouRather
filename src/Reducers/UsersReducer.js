@@ -1,3 +1,6 @@
+
+
+import { updateUserAnswer } from '../Types';
 let users = {
   sarahedo: {
     id: 'sarahedo',
@@ -34,9 +37,30 @@ let users = {
   }
 }
 
+
 export default (state = users, action) => {
 
+
+  console.log(action.payload)
+
+
+
   switch (action.type) {
+
+    case updateUserAnswer:
+      {
+        const { authedUser, qid, answer } = action.payload;
+        return ({
+          ...state,
+          [authedUser]: {
+            ...state[authedUser],
+            answers: {
+              ...state[authedUser].answers,
+              [qid]: answer
+            }
+          }
+        })
+      }
 
     default:
       return state

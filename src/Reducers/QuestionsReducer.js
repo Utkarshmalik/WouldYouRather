@@ -1,3 +1,5 @@
+import { updateQuestionAnswer } from '../Types';
+
 let questions = {
   "8xf0y6ziyjabvozdd253nd": {
     id: '8xf0y6ziyjabvozdd253nd',
@@ -79,11 +81,31 @@ let questions = {
   },
 }
 
+
 const initialState = questions
 
 
 export default (state = initialState, action) => {
   switch (action.type) {
+
+    case updateQuestionAnswer:
+      {
+        const { authedUser, qid, answer } = action.payload;
+
+        return ({
+          ...questions,
+          [qid]: {
+            ...questions[qid],
+            [answer]: {
+              ...questions[qid][answer],
+              votes: questions[qid][answer].votes.concat([authedUser])
+            }
+          }
+        })
+
+      }
+
+
     default:
       return state;
   }

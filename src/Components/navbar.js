@@ -34,7 +34,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return ({
-    userId: state.currentLoggedInUser.name
+    userId: state.RegisteredUsers[state.currentLoggedInUser].name
   })
 }
 

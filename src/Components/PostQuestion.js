@@ -6,39 +6,11 @@ import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
 import { ProgressBar } from 'react-bootstrap'
 import TextField from '@material-ui/core/TextField';
-
-
-
-const GreenRadio = withStyles({
-  root: {
-    color: green[400],
-    '&$checked': {
-      color: green[600],
-    },
-  },
-  checked: {},
-})(props => <Radio color="default" {...props} />);
-
-
-
-const now = 60;
+import { connect } from 'react-redux'
 
 
 
 
-let question = {
-  id: '8xf0y6ziyjabvozdd253nd',
-  author: 'sarahedo',
-  timestamp: 1467166872634,
-  optionOne: {
-    votes: ['sarahedo'],
-    text: 'have horrible short term memory',
-  },
-  optionTwo: {
-    votes: [],
-    text: 'have horrible long term memory'
-  }
-}
 
 
 class QuestionComponent extends Component {
@@ -128,9 +100,6 @@ class QuestionComponent extends Component {
                 </div>
 
               </div>
-
-
-
               <div class="row">
                 <div class="col-md-12">
                   <div class="well well-sm">
@@ -163,4 +132,5 @@ class QuestionComponent extends Component {
 }
 
 
-export default QuestionComponent;
+
+export default connect()(QuestionComponent);

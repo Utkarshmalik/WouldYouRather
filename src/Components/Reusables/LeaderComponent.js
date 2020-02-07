@@ -54,6 +54,19 @@ class QuestionComponent extends Component {
 
   render() {
 
+    console.log(this.props)
+
+    const answered = Object.keys(this.props.user.answers).length;
+    const created = this.props.user.questions.length;
+    const score = answered + created;
+    const name = this.props.user.name;
+    const avatarURL = this.props.user.avatarURL;
+
+    console.log(answered);
+    console.log(created)
+    console.log(name)
+    console.log(avatarURL)
+
     return (
       <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
         <div class="col-md-6">
@@ -66,14 +79,14 @@ class QuestionComponent extends Component {
               <div style={{ textAlign: "center" }} class="row">
                 <div class="col-md-3">
                   <div class="">
-                    <img height="120px" width="140px" src="https://i.ya-webdesign.com/images/avatar-png-1.png" alt="Flowers" />
+                    <img height="120px" width="140px" src={avatarURL} alt="Flowers" />
 
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="">
                     <div>
-                      <h1 style={{ fontSize: 40 }}>{question.author.toUpperCase()}  </h1>
+                      <h1 style={{ fontSize: 40 }}>{name}  </h1>
                     </div>
 
                     <br />
@@ -92,7 +105,7 @@ class QuestionComponent extends Component {
                   <div class="">
                     <Paper style={{ height: 130 }} elevation={5} >
                       <div style={{ textAlign: "center", fontSize: 30 }}> Score:
-                      <div style={{ textAlign: "center", fontSize: 55 }}> 50 </div>
+                      <div style={{ textAlign: "center", fontSize: 55 }}> {score} </div>
 
 
                       </div>
@@ -108,7 +121,7 @@ class QuestionComponent extends Component {
 
 
                     <label style={{ fontSize: 30 }} >
-                      {`Answered Questions : 5`}
+                      {`Answered Questions : ${answered}`}
                     </label>
 
                   </div>
@@ -120,7 +133,7 @@ class QuestionComponent extends Component {
                   <div style={{ textAlign: "center" }} class="well well-sm ">
 
                     <label style={{ fontSize: 30 }} >
-                      {`Created Questions : 3`}
+                      {`Created Questions : ${created}`}
                     </label>
 
                   </div>

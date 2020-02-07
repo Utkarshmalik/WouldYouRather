@@ -110,21 +110,19 @@ const mapStateToProps = (state) => {
 
 
 
-  const currentLoggedInUserAnswers = state.currentLoggedInUser.answers
+  const currentLoggedInUserAnswers = state.RegisteredUsers[state.currentLoggedInUser].answers;
   const questions = state.questions
-
-
 
   const unanswered = Object.keys(questions)
     .filter(key => currentLoggedInUserAnswers[key] === undefined)
     .map(key => questions[key])
-    .sort(function (a, b) { return b.timestamp - a.timestamp })
+    .sort(function (a, b) { return a.timestamp - b.timestamp })
 
 
 
   const answered = Object.keys(currentLoggedInUserAnswers)
     .map(key => { return ({ ...questions[key], answer: currentLoggedInUserAnswers[key] }) })
-    .sort(function (a, b) { return b.timestamp - a.timestamp })
+    .sort(function (a, b) { return a.timestamp - b.timestamp })
 
 
   console.log(unanswered);
