@@ -34,7 +34,7 @@ class HomePage extends Component {
   }
 
   render() {
-
+    console.log("rerender")
     console.log(this.props)
 
 
@@ -106,8 +106,9 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
 
+
+  console.log(state)
 
 
   const currentLoggedInUserAnswers = state.RegisteredUsers[state.currentLoggedInUser].answers;
@@ -116,13 +117,13 @@ const mapStateToProps = (state) => {
   const unanswered = Object.keys(questions)
     .filter(key => currentLoggedInUserAnswers[key] === undefined)
     .map(key => questions[key])
-    .sort(function (a, b) { return a.timestamp - b.timestamp })
+    .sort(function (a, b) { return b.timestamp - a.timestamp })
 
 
 
   const answered = Object.keys(currentLoggedInUserAnswers)
     .map(key => { return ({ ...questions[key], answer: currentLoggedInUserAnswers[key] }) })
-    .sort(function (a, b) { return a.timestamp - b.timestamp })
+    .sort(function (a, b) { return b.timestamp - a.timestamp })
 
 
   console.log(unanswered);

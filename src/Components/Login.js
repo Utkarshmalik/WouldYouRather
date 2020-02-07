@@ -22,7 +22,7 @@ class Login extends Component {
   onSignIn() {
 
     if (this.state.selected !== "none") {
-      this.props.dispatch(AuthLogin(this.props.RegisteredUsers[this.state.selected]))
+      this.props.dispatch(AuthLogin(this.state.selected))
       this.props.history.push('./');
     }
   }

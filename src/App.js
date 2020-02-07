@@ -14,7 +14,7 @@ import Result from './Components/Result';
 import LeaderComponent from './Components/Reusables/LeaderComponent';
 import UnAnsweredComponent from './Components/Reusables/UnansweredComponent';
 import UnansweredList from './Components/UnansweredList';
-
+import ErrorMessage from './Components/Reusables/ErrorComponent';
 
 
 
@@ -39,12 +39,18 @@ class App extends Component {
               <Route path='/new' component={PostQuestion} />
               <Route path='/leaderboard' component={Leaderboard} />
               <Route path='/eeede' component={UnAnsweredComponent} />
-
               <Route path='/question/:id' component={ViewQuestion} />
             </Router>
 
           ) :
-            (<Router><Route path='/' component={Login} /> </Router>)
+            (<Router><Route exact path='/' component={Login} />
+              <Route path='/login' component={ErrorMessage} />
+              <Route path='/new' component={ErrorMessage} />
+              <Route path='/leaderboard' component={ErrorMessage} />
+              <Route path='/eeede' component={ErrorMessage} />
+              <Route path='/question/:id' component={ErrorMessage} />
+
+            </Router>)
         }
       </div >
     );
@@ -55,7 +61,6 @@ const mapStateToProps = (state) => {
   return (
     {
       logggedIn: (state.currentLoggedInUser !== null)
-      //logggedIn: true
 
     }
   )

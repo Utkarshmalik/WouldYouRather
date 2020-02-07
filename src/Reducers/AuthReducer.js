@@ -14,7 +14,7 @@ import { LogoutUser } from '../Types';
 //   }
 // };
 
-const initialState = "tylermcginnis";
+const initialState = null;
 
 
 

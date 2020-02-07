@@ -1,6 +1,6 @@
 
 
-import { updateUserAnswer } from '../Types';
+import { updateUserAnswer, AddNewUserModify } from '../Types';
 let users = {
   sarahedo: {
     id: 'sarahedo',
@@ -58,6 +58,20 @@ export default (state = users, action) => {
               ...state[authedUser].answers,
               [qid]: answer
             }
+          }
+        })
+      }
+
+    case AddNewUserModify:
+      {
+        const question = action.payload;
+        const authedUser = question.author;
+
+        return ({
+          ...state,
+          [authedUser]: {
+            ...state[authedUser],
+            questions: state[authedUser].questions.concat([question.id])
           }
         })
       }

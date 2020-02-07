@@ -1,4 +1,4 @@
-import { currentLoggedInUser, updateUserAnswer, updateQuestionAnswer } from '../Types';
+import { currentLoggedInUser, updateUserAnswer, updateQuestionAnswer, AddNewUserModify, AddNewQuestionModify } from '../Types';
 import { LogoutUser } from '../Types';
 import { _saveQuestionAnswer } from '../data';
 
@@ -49,6 +49,31 @@ export const onSubmitAnswer = (authedUser, qid, answer) => {
   return ({
     type: updateUserAnswer,
     payload: data
+  })
+
+}
+
+export const onAddNewUserChange = (question) => {
+
+  console.log("heelllo 1");
+
+
+  return ({
+    type: AddNewUserModify,
+    payload: question
+
+  })
+
+
+}
+
+export const onAddNewQuestionChange = (question) => {
+  console.log("hellooo 2")
+
+  return ({
+    type: AddNewQuestionModify,
+    payload: question
+
   })
 
 }

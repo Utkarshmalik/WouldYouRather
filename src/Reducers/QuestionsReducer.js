@@ -1,4 +1,4 @@
-import { updateQuestionAnswer } from '../Types';
+import { updateQuestionAnswer, AddNewQuestionModify } from '../Types';
 
 let questions = {
   "8xf0y6ziyjabvozdd253nd": {
@@ -90,20 +90,35 @@ export default (state = initialState, action) => {
 
     case updateQuestionAnswer:
       {
+        console.log(action.payload)
+
         const { authedUser, qid, answer } = action.payload;
 
         return ({
-          ...questions,
+          ...state,
           [qid]: {
-            ...questions[qid],
+            ...state[qid],
             [answer]: {
-              ...questions[qid][answer],
-              votes: questions[qid][answer].votes.concat([authedUser])
+              ...state[qid][answer],
+              votes: state[qid][answer].votes.concat([authedUser])
             }
           }
         })
 
+
       }
+
+    case AddNewQuestionModify: {
+
+      const question = action.payload
+
+      console.log(question)
+
+      return {
+        ...state,
+        [question.id]: question
+      }
+    }
 
 
     default:

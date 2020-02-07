@@ -7,10 +7,8 @@ import Button from '@material-ui/core/Button';
 import { ProgressBar } from 'react-bootstrap'
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux'
-
-
-
-
+import { formatQuestion } from '../data';
+import { onAddNewUserChange, onAddNewQuestionChange } from '../Actions/shared';
 
 
 class QuestionComponent extends Component {
@@ -21,21 +19,31 @@ class QuestionComponent extends Component {
   }
 
   onOptionOneChange(e) {
-    console.log(e.target.value)
     this.setState({
       optionOne: e.target.value
     })
   }
   onOptionTwoChange(e) {
-    console.log(e.target.value)
     this.setState({
       optionTwo: e.target.value
     })
   }
 
   onPost() {
-    console.log(this.state.optionOne)
-    console.log(this.state.optionTwo)
+
+    console.log(this.props);
+
+    const { optionOne, optionTwo } = this.state;
+    const { currentUser } = this.props;
+
+    const data = { optionOneText: optionOne, optionTwoText: optionTwo, author: currentUser };
+    const Question = formatQuestion(data);
+
+    this.props.dispatch(onAddNewUserChange(Question));
+    this.props.dispatch(onAddNewQuestionChange(Question));
+
+    this.props.history.push('/')
+
 
   }
 
@@ -118,7 +126,6 @@ class QuestionComponent extends Component {
               </div>
             </div>
             <div style={{ textAlign: "center" }} class="panel-footer">
-
               <Button onClick={this.onPost.bind(this)} style={{ height: 50, width: "50%" }} variant="contained" color="secondary">
                 <h1>SUBMIT</h1>
               </Button>
@@ -131,6 +138,11 @@ class QuestionComponent extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return ({
+    currentUser: state.currentLoggedInUser
+  })
+}
 
 
-export default connect()(QuestionComponent);
+export default connect(mapStateToProps)(QuestionComponent);

@@ -8,8 +8,6 @@ import { onSubmitAnswer, updationQuestionAnswer } from '../../Actions/shared';
 
 const now = 60;
 
-
-
 let question = {
   id: '8xf0y6ziyjabvozdd253nd',
   author: 'sarahedo',
@@ -65,10 +63,15 @@ class ViewQuestionComponent extends Component {
 
     const countVotes1 = this.props.question.optionOne.votes.length;
     const countVotes2 = this.props.question.optionTwo.votes.length;
+
+    console.log(countVotes1);
+    console.log(countVotes2)
+
     const total = countVotes1 + countVotes2
 
-    const prcnt1 = (countVotes1 * 100) / total;
-    const prcnt2 = (countVotes2 * 100) / total;
+
+    const prcnt1 = (total === 0) ? 0 : (countVotes1 * 100) / total;
+    const prcnt2 = (total === 0) ? 0 : (countVotes2 * 100) / total;
 
 
 
@@ -113,6 +116,7 @@ class ViewQuestionComponent extends Component {
                     </div>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="col-md-12">
                     <div class="well well-sm  RadioBox">
@@ -132,6 +136,7 @@ class ViewQuestionComponent extends Component {
                   </div>
 
                 </div>
+
                 <div class="row">
                   <div class="col-md-12">
                     <div class="well well-sm RadioBox">
@@ -150,6 +155,7 @@ class ViewQuestionComponent extends Component {
                   </div>
 
                 </div>
+
               </div>
 
               <div class="panel-footer center">
@@ -160,11 +166,10 @@ class ViewQuestionComponent extends Component {
 
             </div>
           </div>
-        </div >
-
+        </ div>
 
       ) : (
-          <div>
+          <div style={{ display: 'flex', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <div class="col-md-6">
               <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -227,15 +232,11 @@ class ViewQuestionComponent extends Component {
                         <div style={{ marginTop: "-10px" }}>
                           ({countVotes2} out of {total})
                         </div>
-
                       </div>
                     </div>
-
                   </div>
                 </div>
                 <div style={{ textAlign: "center", height: 20 }} class="panel-footer">
-
-
                 </div>
               </div>
             </div>
