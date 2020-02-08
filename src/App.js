@@ -24,33 +24,49 @@ class App extends Component {
 
         {
 
+          <Router>
+            <Route component={navbar} />
+            <Switch>
+              <Route exact path='/' component={HomePage} />
+              <Route path='/add' component={PostQuestion} />
+              <Route path='/login' component={Login} />
+              <Route path='/leaderboard' component={Leaderboard} />
+              <Route path='/question/:id' component={ViewQuestion} />
 
-          (this.props.logggedIn) ? (
+              <Route component={ErrorMessage} />
 
-            <Router>
-              <Route path='/' component={navbar} />
-              <Switch>
-                <Route exact path='/' component={HomePage} />
-                <Route path='/login' component={Login} />
-                <Route path='/add' component={PostQuestion} />
-                <Route path='/leaderboard' component={Leaderboard} />
-                <Route path='/question/:id' component={ViewQuestion} />
-                <Route path='/404' component={ErrorMessage} />
-                <Redirect to='/404' />
+            </Switch>
+          </Router>
 
-              </Switch>
-            </Router>
-          ) :
-            (
-              <Router>
-                <Switch>
-                  <Route exact path='/' component={Login} />
-                  <Route path='/404' component={ErrorMessage} />
-                  <Redirect to='/404' />
-                </Switch>
-              </Router>
 
-            )
+
+          // (this.props.logggedIn) ? (
+
+          //   <Router>
+
+          //     <Route path='/' component={navbar} />
+          //     <Switch>
+          //       <Route exact path='/' component={HomePage} />
+          //       <Route path='/login' component={Login} />
+          //       <Route path='/add' component={PostQuestion} />
+          //       <Route path='/leaderboard' component={Leaderboard} />
+          //       <Route path='/question/:id' component={ViewQuestion} />
+          //       <Route path='/404' component={ErrorMessage} />
+          //       <Redirect to='/404' />
+
+          //     </Switch>
+          //   </Router>
+          // ) :
+          //   (
+          //     <Router>
+          //       <Switch>
+          //         <Route exact path='/' component={Login} />
+          //         <Route path='/404' component={ErrorMessage} />
+          //         <Redirect to='/404' />
+          //       </Switch>
+          //     </Router>
+
+          //   )
         }
       </div >
     );

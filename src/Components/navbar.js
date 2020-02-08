@@ -26,8 +26,8 @@ class App extends Component {
             <Link to='/add'> <Nav style={{ fontSize: "20px", color: "white", marginRight: "20px" }}>New </Nav> </Link>
             <Link to='/leaderboard'> <Nav style={{ fontSize: "20px", color: "white", marginRight: "20px" }}>Leaderboard </Nav> </Link>
           </Nav>
-          <span style={{ color: "white", marginRight: "20vw" }}>Welcome <Link to='/' style={{ color: "white", fontSize: "25px", fontWeight: 'bold' }}> {this.props.userId.toUpperCase()} </Link></span>
-          <Link to='/'><Nav style={{ fontSize: "20px", color: "white", marginRight: "20px" }} onClick={this.OnLogout.bind(this)} > Logout</Nav></Link>
+          <span style={{ color: "white", marginRight: "20vw" }}>{(this.props.userId == null) ? ("Login to Continue") : (`Welcome`)} <Link to='/' style={{ color: "white", fontSize: "25px", fontWeight: 'bold' }}> {(this.props.userId == null) ? ("") : (this.props.userId.toUpperCase())}  </Link></span>
+          <Link to='/'><Nav style={{ fontSize: "20px", color: "white", marginRight: "20px" }} onClick={this.OnLogout.bind(this)} > {(this.props.userId == null) ? ("") : (`Logout`)} </Nav></Link>
         </Navbar>
       </div>
     )
@@ -35,6 +35,11 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
+  if (state.currentLoggedInUser === null) {
+    return ({
+      userId: null
+    })
+  }
   return ({
     userId: state.RegisteredUsers[state.currentLoggedInUser].name
   })

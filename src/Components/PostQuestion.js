@@ -5,6 +5,8 @@ import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux'
 import { formatQuestion } from '../data';
 import { onAddNewUserChange, onAddNewQuestionChange } from '../Actions/shared';
+import LoginPage from './Login';
+
 
 
 class QuestionComponent extends Component {
@@ -25,11 +27,11 @@ class QuestionComponent extends Component {
     })
   }
 
+  componentDidMount() {
+
+  }
+
   onPost() {
-
-    //console.log(this.props);
-
-
 
     const { optionOne, optionTwo } = this.state;
 
@@ -55,7 +57,8 @@ class QuestionComponent extends Component {
   render() {
 
     return (
-      <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
+
+      (this.props.currentUser === null) ? (<LoginPage history={this.props.history} destination='/add' />) : (<div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
         <div className="col-md-8">
           <div className="panel panel-primary">
             <div className="panel-heading">
@@ -136,13 +139,14 @@ class QuestionComponent extends Component {
             </div>
           </div>
         </div>
-      </div>
-
+      </div>)
     )
   }
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
+
   return ({
     currentUser: state.currentLoggedInUser
   })

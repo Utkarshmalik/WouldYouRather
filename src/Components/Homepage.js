@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
 import QuestionComponent from './Reusables/UnansweredComponent';
-
+import LoginPage from './Login';
 
 class HomePage extends Component {
 
   state = {
     currentState: "unanswered"
   }
+
+
 
 
   onPressUnasweredQustions() {
@@ -18,21 +20,20 @@ class HomePage extends Component {
   }
 
 
+
   onPressAnsweredQustions() {
 
     if (this.state.currentState !== "answered")
       this.setState({ currentState: "answered" })
-
-    //console.log("answered");
   }
 
   render() {
-    //console.log("rerender")
-    //console.log(this.props)
+
 
 
     return (
-      <div style={{ display: "flex", justifyContent: "center", color: "black" }} >
+
+      (this.props.currentUser === null) ? (<LoginPage history={this.props.history} destination='/' />) : (<div style={{ display: "flex", justifyContent: "center", color: "black" }} >
 
         <div className="col-md-10">
           <div className="panel panel-primary">
@@ -46,7 +47,7 @@ class HomePage extends Component {
                   <div className="">
                     <Button style={(this.state.currentState === 'unanswered') ? ({ backgroundColor: '#428BCA' }) : ({})} className="button" onClick={this.onPressUnasweredQustions.bind(this)} variant="contained">
                       Unaswered Questions
-              </Button>
+          </Button>
                   </div>
 
                 </div>
@@ -54,7 +55,7 @@ class HomePage extends Component {
                   <div className="">
                     <Button style={(this.state.currentState === 'answered') ? ({ backgroundColor: '#428BCA' }) : ({})} className="button" onClick={this.onPressAnsweredQustions.bind(this)} variant="contained">
                       Answered Questions
-          </Button>
+      </Button>
                   </div>
                 </div>
 
@@ -93,37 +94,48 @@ class HomePage extends Component {
           </div>
         </div>
       </div>
-
+      )
     )
+
+
+
+
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, myProps) => {
 
+  console.log(myProps)
 
-  //console.log(state)
-
-
-  const currentLoggedInUserAnswers = state.RegisteredUsers[state.currentLoggedInUser].answers;
-  const questions = state.questions
-
-  const unanswered = Object.keys(questions)
-    .filter(key => currentLoggedInUserAnswers[key] === undefined)
-    .map(key => questions[key])
-    .sort(function (a, b) { return b.timestamp - a.timestamp })
-
-
-
-  const answered = Object.keys(currentLoggedInUserAnswers)
-    .map(key => { return ({ ...questions[key], answer: currentLoggedInUserAnswers[key] }) })
-    .sort(function (a, b) { return b.timestamp - a.timestamp })
-  return (
-    {
-      currentUser: state.currentLoggedInUser,
-      answered,
-      unanswered
+  if (state.currentLoggedInUser === null) {
+    return ({
+      currentUser: null,
+      history: myProps.history
 
     })
+  }
+  else {
+    const currentLoggedInUserAnswers = state.RegisteredUsers[state.currentLoggedInUser].answers;
+    const questions = state.questions
+    const unanswered = Object.keys(questions)
+      .filter(key => currentLoggedInUserAnswers[key] === undefined)
+      .map(key => questions[key])
+      .sort(function (a, b) { return b.timestamp - a.timestamp })
+
+
+
+    const answered = Object.keys(currentLoggedInUserAnswers)
+      .map(key => { return ({ ...questions[key], answer: currentLoggedInUserAnswers[key] }) })
+      .sort(function (a, b) { return b.timestamp - a.timestamp })
+    return (
+      {
+        currentUser: state.currentLoggedInUser,
+        answered,
+        unanswered
+
+      })
+  }
+
 }
 
 export default connect(mapStateToProps)(HomePage);

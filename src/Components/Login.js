@@ -3,6 +3,7 @@ import './Styles/loginStyle.css';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { AuthLogin } from '../Actions/shared';
+import { Link, Redirect } from 'react-router-dom'
 
 
 class Login extends Component {
@@ -21,9 +22,11 @@ class Login extends Component {
 
   onSignIn() {
 
+    console.log(this.props)
+
     if (this.state.selected !== "none") {
       this.props.dispatch(AuthLogin(this.state.selected))
-      this.props.history.push('./');
+      this.props.history.push(this.props.destination);
     }
   }
 
@@ -96,8 +99,6 @@ class Login extends Component {
                     <Button style={{ padding: "10px", width: "200px", fontSize: "30px" }} onClick={this.onSignIn.bind(this)} type="button" className="buttonui "> <span> Sign In </span>
                     </Button>
                   </div>
-
-
                 </div>
 
               </div>
@@ -119,7 +120,9 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, myProps) => {
+  console.log(state)
+  console.log(myProps)
   return ({
     RegisteredUsers: state.RegisteredUsers
   })

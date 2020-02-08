@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import LeaderComponent from './Reusables/LeaderComponent';
 import { connect } from 'react-redux';
+import LoginPage from './Login';
+
 
 
 class Leaderboard extends Component {
 
   render() {
-
-    const { RegisteredUsers } = this.props;
-    return (
+    return (  
       <div>
-        {
-          RegisteredUsers.map((user) => <LeaderComponent key={user.id} user={user} />)
-        }
+        {(this.props.currentUser === null) ? (<LoginPage history={this.props.history} destination='/leaderboard' />) : (
+
+          <div>
+            {
+              this.props.RegisteredUsers.map((user) => <LeaderComponent key={user.id} user={user} />)
+            }
+          </div>
+        )}
       </div>
+
     )
   }
 
@@ -41,14 +47,13 @@ const myStateToProps = (state, myProps) => {
     }
   )
 
-  setTimeout(() => {
-    //console.log(users)
-  }, 2000)
 
 
 
   return ({
+    currentUser: state.currentLoggedInUser,
     RegisteredUsers: users
+
   })
 }
 
