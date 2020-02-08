@@ -6,21 +6,8 @@ import { connect } from 'react-redux';
 import { ProgressBar } from 'react-bootstrap'
 import { onSubmitAnswer, updationQuestionAnswer } from '../../Actions/shared';
 
-const now = 60;
 
-let question = {
-  id: '8xf0y6ziyjabvozdd253nd',
-  author: 'sarahedo',
-  timestamp: 1467166872634,
-  optionOne: {
-    votes: ['sarahedo'],
-    text: 'have horrible short term memory',
-  },
-  optionTwo: {
-    votes: [],
-    text: 'have horrible long term memory'
-  }
-}
+
 
 
 class ViewQuestionComponent extends Component {
@@ -42,7 +29,6 @@ class ViewQuestionComponent extends Component {
 
       const user_id = this.props.currentUser.id;
       const question_id = this.props.question.id;
-      const RegisteredUsers = this.props.RegisteredUsers;
       const answer = this.state.selected;
 
       this.props.dispatch(onSubmitAnswer(user_id, question_id, answer));
@@ -57,15 +43,13 @@ class ViewQuestionComponent extends Component {
     const authorName = this.props.author.name
     const avatar = this.props.author.avatarURL
     const { answer } = this.props;
-    //console.log(avatar)
+
     const optionOne = this.props.question.optionOne.text;
     const optionTwo = this.props.question.optionTwo.text;
 
     const countVotes1 = this.props.question.optionOne.votes.length;
     const countVotes2 = this.props.question.optionTwo.votes.length;
 
-    //console.log(countVotes1);
-    //console.log(countVotes2)
 
     const total = countVotes1 + countVotes2
 

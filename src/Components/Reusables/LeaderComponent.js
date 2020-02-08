@@ -1,28 +1,9 @@
 import React, { Component } from 'react';
 import '../Styles/QuestionStyle.css';
-import { withStyles } from '@material-ui/core/styles';
-import Radio from '@material-ui/core/Radio';
-import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
 
 
-
-
-
-let question = {
-  id: '8xf0y6ziyjabvozdd253nd',
-  author: 'sarahedo',
-  timestamp: 1467166872634,
-  optionOne: {
-    votes: ['sarahedo'],
-    text: 'have horrible short term memory',
-  },
-  optionTwo: {
-    votes: [],
-    text: 'have horrible long term memory'
-  }
-}
 
 
 class QuestionComponent extends Component {
@@ -38,7 +19,7 @@ class QuestionComponent extends Component {
   }
 
   onVote() {
-    //console.log("Vote from here");
+
   }
 
   render() {

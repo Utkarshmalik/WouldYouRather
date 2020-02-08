@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import '../Components/Styles/QuestionStyle.css';
-import { withStyles } from '@material-ui/core/styles';
-import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
-import { ProgressBar } from 'react-bootstrap'
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux'
 import { formatQuestion } from '../data';
@@ -13,8 +10,8 @@ import { onAddNewUserChange, onAddNewQuestionChange } from '../Actions/shared';
 class QuestionComponent extends Component {
 
   state = {
-    option1: "",
-    option2: ""
+    optionOne: "",
+    optionTwo: ""
   }
 
   onOptionOneChange(e) {
@@ -32,7 +29,16 @@ class QuestionComponent extends Component {
 
     //console.log(this.props);
 
+
+
     const { optionOne, optionTwo } = this.state;
+
+    if (optionOne === "" || optionTwo === "") {
+
+      alert("The option field cannt be empty");
+      return;
+    }
+
     const { currentUser } = this.props;
 
     const data = { optionOneText: optionOne, optionTwoText: optionTwo, author: currentUser };

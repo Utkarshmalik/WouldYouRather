@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom'
 
 class Message extends Component {
 
+
   render() {
 
-    const { RegisteredUsers } = this.props;
     return (
 
       <div style={{ display: 'flex', flex: 1, justifyContent: 'center', marginTop: '5%' }}>

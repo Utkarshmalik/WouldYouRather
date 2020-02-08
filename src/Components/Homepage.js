@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { currentLoggedInUser } from '../Types';
 import { Button } from '@material-ui/core';
-import homepageStyle from './Styles/homepageStyle.css';
-import { DEFAULT_EXTENSIONS } from '@babel/core';
 import QuestionComponent from './Reusables/UnansweredComponent';
-import UnansweredList from './UnansweredList';
 
 
 class HomePage extends Component {
@@ -17,14 +13,14 @@ class HomePage extends Component {
 
   onPressUnasweredQustions() {
 
-    if (this.state.currentState != "unanswered")
+    if (this.state.currentState !== "unanswered")
       this.setState({ currentState: "unanswered" })
   }
 
 
   onPressAnsweredQustions() {
 
-    if (this.state.currentState != "answered")
+    if (this.state.currentState !== "answered")
       this.setState({ currentState: "answered" })
 
     //console.log("answered");

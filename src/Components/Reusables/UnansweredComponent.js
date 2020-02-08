@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import '../Styles/QuestionStyle.css';
-import { withStyles } from '@material-ui/core/styles';
-import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 

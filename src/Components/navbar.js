@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Nav, Navbar, Form, Button, FormControl } from 'react-bootstrap'
+import { Nav, Navbar } from 'react-bootstrap'
 import { connect } from 'react-redux';
 import { AuthLogout } from '../Actions/shared';
 import { Link } from 'react-router-dom'
@@ -23,7 +23,7 @@ class App extends Component {
           </Link>
           <Nav className="mr-auto">
             <Link to='/'> <Nav style={{ fontSize: "20px", color: "white", marginLeft: "20px", marginRight: "20px" }}>Home </Nav> </Link>
-            <Link to='/new'> <Nav style={{ fontSize: "20px", color: "white", marginRight: "20px" }}>New </Nav> </Link>
+            <Link to='/add'> <Nav style={{ fontSize: "20px", color: "white", marginRight: "20px" }}>New </Nav> </Link>
             <Link to='/leaderboard'> <Nav style={{ fontSize: "20px", color: "white", marginRight: "20px" }}>Leaderboard </Nav> </Link>
           </Nav>
           <span style={{ color: "white", marginRight: "20vw" }}>Welcome <Link to='/' style={{ color: "white", fontSize: "25px", fontWeight: 'bold' }}> {this.props.userId.toUpperCase()} </Link></span>

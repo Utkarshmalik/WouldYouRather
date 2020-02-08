@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Login from './Components/Login';
 import HomePage from './Components/Homepage';
 import Leaderboard from './Components/LeaderBoard';
@@ -10,10 +9,7 @@ import ViewQuestion from './Components/Reusables/ViewQuestionComponent.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import navbar from './Components/navbar'
 import { connect } from 'react-redux';
-import Result from './Components/Result';
-import LeaderComponent from './Components/Reusables/LeaderComponent';
 import UnAnsweredComponent from './Components/Reusables/UnansweredComponent';
-import UnansweredList from './Components/UnansweredList';
 import ErrorMessage from './Components/Reusables/ErrorComponent';
 
 
@@ -31,25 +27,33 @@ class App extends Component {
 
           (this.props.logggedIn) ? (
 
-
             <Router>
               <Route path='/' component={navbar} />
-              <Route exact path='/' component={HomePage} />
-              <Route path='/login' component={Login} />
-              <Route path='/new' component={PostQuestion} />
-              <Route path='/leaderboard' component={Leaderboard} />
-              <Route path='/eeede' component={UnAnsweredComponent} />
-              <Route path='/question/:id' component={ViewQuestion} />
+              <Switch>
+                <Route exact path='/' component={HomePage} />
+                <Route path='/login' component={Login} />
+                <Route path='/add' component={PostQuestion} />
+                <Route path='/leaderboard' component={Leaderboard} />
+                <Route path='/eeede' component={UnAnsweredComponent} />
+                <Route path='/question/:id' component={ViewQuestion} />
+                <Router path='/404' component={ErrorMessage} />
+
+
+                <Redirect path='/404' />
+              </Switch>
             </Router>
 
           ) :
-            (<Router><Route exact path='/' component={Login} />
-              <Route path='/login' component={ErrorMessage} />
-              <Route path='/new' component={ErrorMessage} />
-              <Route path='/leaderboard' component={ErrorMessage} />
-              <Route path='/question/:id' component={ErrorMessage} />
+            (
+              <Router>
+                <Switch>
+                  <Route exact path='/' component={Login} />
+                  <Redirect to="/" />
 
-            </Router>)
+                </Switch>
+              </Router>
+
+            )
         }
       </div >
     );

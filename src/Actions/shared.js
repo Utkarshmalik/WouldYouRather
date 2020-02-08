@@ -1,6 +1,5 @@
 import { currentLoggedInUser, updateUserAnswer, updateQuestionAnswer, AddNewUserModify, AddNewQuestionModify } from '../Types';
 import { LogoutUser } from '../Types';
-import { _saveQuestionAnswer } from '../data';
 
 
 export const tempAction = () => {
