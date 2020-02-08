@@ -143,7 +143,7 @@ class ViewQuestionComponent extends Component {
               </div>
 
               <div className="panel-footer center">
-                <Button className="button" onClick={this.onVote.bind(this)} variant="contained">
+                <Button style={{backgroundColor:'#428BCA'}} className="button" onClick={this.onVote.bind(this)} variant="contained">
                   <div className="head3">VOTE</div>
                 </Button>
               </div>

@@ -34,22 +34,19 @@ class App extends Component {
                 <Route path='/login' component={Login} />
                 <Route path='/add' component={PostQuestion} />
                 <Route path='/leaderboard' component={Leaderboard} />
-                <Route path='/eeede' component={UnAnsweredComponent} />
                 <Route path='/question/:id' component={ViewQuestion} />
-                <Router path='/404' component={ErrorMessage} />
+                <Route path='/404' component={ErrorMessage} />
+                <Redirect to='/404' />
 
-
-                <Redirect path='/404' />
               </Switch>
             </Router>
-
           ) :
             (
               <Router>
                 <Switch>
                   <Route exact path='/' component={Login} />
-                  <Redirect to="/" />
-
+                  <Route path='/404' component={ErrorMessage} />
+                  <Redirect to='/404' />
                 </Switch>
               </Router>
 
