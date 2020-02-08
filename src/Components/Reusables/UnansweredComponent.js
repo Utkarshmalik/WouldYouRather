@@ -21,7 +21,7 @@ class QuestionComponent extends Component {
 
   onViewPoll() {
 
-    //console.log(this.props);
+    ////console.log(this.props);
 
   }
 
@@ -31,10 +31,10 @@ class QuestionComponent extends Component {
     const { author, avatar } = this.props;
 
 
-    //console.log(this.props)
+    ////console.log(this.props)
 
 
-    //console.log(optionOne)
+    ////console.log(optionOne)
 
     return (
       <div style={{ display: 'flex', flex: 1, justifyContent: 'center', marginTop: '40px' }}>
@@ -89,8 +89,8 @@ class QuestionComponent extends Component {
 }
 const mapStateToProps = (state, myProps) => {
 
-  //console.log(state)
-  //console.log(myProps)
+  ////console.log(state)
+  ////console.log(myProps)
 
   return ({
     author: state.RegisteredUsers[myProps.question.author].name,

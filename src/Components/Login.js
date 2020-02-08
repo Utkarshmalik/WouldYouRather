@@ -3,7 +3,6 @@ import './Styles/loginStyle.css';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { AuthLogin } from '../Actions/shared';
-import { Link, Redirect } from 'react-router-dom'
 
 
 class Login extends Component {
@@ -15,14 +14,13 @@ class Login extends Component {
   handleChange(event) {
 
     const value = event.target.value;
-    //console.log(value);
     this.setState({ selected: value })
 
   }
 
   onSignIn() {
 
-    console.log(this.props)
+    //console.log(this.props)
 
     if (this.state.selected !== "none") {
       this.props.dispatch(AuthLogin(this.state.selected))
@@ -121,8 +119,8 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state, myProps) => {
-  console.log(state)
-  console.log(myProps)
+  //console.log(state)
+  //console.log(myProps)
   return ({
     RegisteredUsers: state.RegisteredUsers
   })

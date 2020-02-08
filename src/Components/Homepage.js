@@ -105,7 +105,7 @@ class HomePage extends Component {
 
 const mapStateToProps = (state, myProps) => {
 
-  console.log(myProps)
+  //console.log(myProps)
 
   if (state.currentLoggedInUser === null) {
     return ({

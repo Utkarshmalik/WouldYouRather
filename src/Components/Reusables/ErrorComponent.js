@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import '../Styles/QuestionStyle.css';
-import { Button } from 'react-bootstrap';
-import { Link, Redirect } from 'react-router-dom'
 import LoginPage from '../Login';
 import { connect } from 'react-redux'
 

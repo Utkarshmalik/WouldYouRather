@@ -145,7 +145,7 @@ class QuestionComponent extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
+  //console.log(state)
 
   return ({
     currentUser: state.currentLoggedInUser

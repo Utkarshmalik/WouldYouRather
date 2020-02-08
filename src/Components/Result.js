@@ -39,7 +39,7 @@ class QuestionComponent extends Component {
   }
 
   onVote() {
-    //console.log("Vote from here");
+    ////console.log("Vote from here");
   }
 
   render() {

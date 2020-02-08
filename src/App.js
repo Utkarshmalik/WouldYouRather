@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './Components/Login';
 import HomePage from './Components/Homepage';
 import Leaderboard from './Components/LeaderBoard';
@@ -9,7 +9,6 @@ import ViewQuestion from './Components/Reusables/ViewQuestionComponent.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import navbar from './Components/navbar'
 import { connect } from 'react-redux';
-import UnAnsweredComponent from './Components/Reusables/UnansweredComponent';
 import ErrorMessage from './Components/Reusables/ErrorComponent';
 
 

@@ -223,10 +223,10 @@ const mapStateToProps = (state, myProps) => {
   const question = questions[questionId];
 
 
-  console.log(questionId)
-  console.log(questions)
-  console.log(state.currentLoggedInUser)
-  console.log(question)
+  //console.log(questionId)
+  //console.log(questions)
+  //console.log(state.currentLoggedInUser)
+  //console.log(question)
 
 
 

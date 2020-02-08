@@ -24,7 +24,7 @@ class QuestionComponent extends Component {
 
   render() {
 
-    //console.log(this.props)
+    ////console.log(this.props)
 
     const answered = Object.keys(this.props.user.answers).length;
     const created = this.props.user.questions.length;
@@ -32,10 +32,10 @@ class QuestionComponent extends Component {
     const name = this.props.user.name;
     const avatarURL = this.props.user.avatarURL;
 
-    //console.log(answered);
-    //console.log(created)
-    //console.log(name)
-    //console.log(avatarURL)
+    ////console.log(answered);
+    ////console.log(created)
+    ////console.log(name)
+    ////console.log(avatarURL)
 
     return (
       <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
